@@ -8,6 +8,5 @@ story. Can you think of 3 ways to count the no of teeth of the crocodile ?
     
 2. That is my pet! I will throw catches of meat balls. It has to open its mouth.
     And then, count!!
-    
-3. 
+   
 
