@@ -14,8 +14,7 @@ OR
                class can give away its properties to be used by an other class. 
            -->Just like how we normally say that a paticular parent and child pair have some common TRITES or if they                        resemble eachother, it is because of inheritance. 
            
-     
-     The standard definiion!
+    The standard definiion!
      
 >Child Class:
 The class that extends the features of another class is known as child class, sub class or derived class.
