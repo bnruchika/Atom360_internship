@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+	<title>DO</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="app.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css">	 -->
+	<link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+
+<div id="top-nav">
+<p> <span id="tag">Jot Down Your Daily ToDo With</span> <span id="do">DO!</span> </p>
+</div>
+
+
+
+<div id="container">
+
+ <div class="main" ng-controller="TodoListController as todoList">
+      
+      <span id="count">{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+       
+     <form  ng-submit="todoList.addTodo()">
+        <textarea id="ip" type="text" ng-model="todoList.todoText" placeholder="  Add new todo here" size="40"></textarea><br>
+        <input class="btn-primary" type="submit" value="Add"><br>
+        
+     </form> 
+       
+    <ul class="unstyled">
+            
+        <li class="note" ng-repeat="todo in todoList.todos">
+        	<a style="float: right; color: black;" href="#" ng-click="todoList.archive()"><i class="fa fa-trash"> </i></a>
+        	<input type="checkbox" ng-model="todo.done">
+        	<span id="dates">{{CurrentDate | date:'dd/MM/yyyy'}}</span> |
+            <label class="checkbox">
+           <span class="done-{{todo.done}}">{{todo.text}}</span>
+            </label>
+        </li>
+
+    </ul>
+
+    </div>
+
+</div>
+
+<script>
+	angular.module('todoApp', [])
+  .controller('TodoListController', function($scope) {
+    var todoList = this;
+    todoList.todos = [];
+     $scope.CurrentDate = new Date();
+    todoList.addTodo = function() {
+      todoList.todos.push({text:todoList.todoText, done:false});
+      todoList.todoText = '';
+    };
+ 
+    todoList.remaining = function() {
+      var count = 0;
+      angular.forEach(todoList.todos, function(todo) {
+        count += todo.done ? 0 : 1;
+      });
+      return count;
+    };
+ 
+    todoList.archive = function() {
+      var oldTodos = todoList.todos;
+      todoList.todos = [];
+      angular.forEach(oldTodos, function(todo) {
+        if (!todo.done) todoList.todos.push(todo);
+      });
+    };
+  });
+</script>
+</body>
+
+</html>
