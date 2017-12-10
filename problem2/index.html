@@ -15,7 +15,7 @@
 <body>
 
 <div id="top-nav">
-<p> <span id="tag">Jot Down Your Daily ToDo With</span> <span id="do">DO!</span> </p>
+<p> <span id="tag">Jot Down Your Daily ToDo List With</span> <span id="do">DO!</span> </p>
 </div>
 
 
@@ -28,7 +28,7 @@
        
      <form  ng-submit="todoList.addTodo()">
         <textarea id="ip" type="text" ng-model="todoList.todoText" placeholder="  Add new todo here" size="40"></textarea><br>
-        <input class="btn-primary" type="submit" value="Add"><br>
+        <input class="btn-primary" type="submit" value="ADD"><br>
         
      </form> 
        
@@ -53,7 +53,7 @@
 	angular.module('todoApp', [])
   .controller('TodoListController', function($scope) {
     var todoList = this;
-    todoList.todos = [];
+    todoList.todos = [{text:'My ToDo List In Do!', done:false}];
      $scope.CurrentDate = new Date();
     todoList.addTodo = function() {
       todoList.todos.push({text:todoList.todoText, done:false});
