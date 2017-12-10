@@ -24,10 +24,10 @@
 
  <div class="main" ng-controller="TodoListController as todoList">
       
-      <span id="count">{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      <span id="count">You Have {{todoList.todos.length}} Tasks Remaining</span>
        
      <form  ng-submit="todoList.addTodo()">
-        <textarea id="ip" type="text" ng-model="todoList.todoText" placeholder="  Add new todo here" size="40"></textarea><br>
+        <textarea id="ip" type="text" ng-model="todoList.todoText" placeholder="  Add new todo here" size="40" required></textarea><br>
         <input class="btn-primary" type="submit" value="ADD"><br>
         
      </form> 
